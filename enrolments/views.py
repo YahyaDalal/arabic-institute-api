@@ -13,12 +13,20 @@ class EnrolView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        enrolment = serializer.save(student=self.request.user, status='active')
+        # Build the instance without saving first
+        enrolment = Enrolment(
+            student=self.request.user,
+            cohort=serializer.validated_data['cohort'],
+            status='active'
+        )
+        # Run all clean() validation before touching the database
         try:
             enrolment.full_clean()
         except DjangoValidationError as e:
-            enrolment.delete()
             raise ValidationError(e.message_dict if hasattr(e, 'message_dict') else e.messages)
+        
+        # Only save if validation passed
+        enrolment.save()
 
 
 class MyEnrolmentsView(generics.ListAPIView):
