@@ -20,3 +20,24 @@ class Course(models.Model):
 
     def __str__(self):
         return f'{self.title} ({self.status})'
+
+# Cohort model to represent specific offerings of a course with a teacher and schedule
+
+class Cohort(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='cohorts')
+    teacher = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='cohorts')
+    start_date = models.DateField()
+    end_date = models.DateField()
+    capacity = models.PositiveIntegerField(default=30)
+    enrolment_open = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f'{self.course.title} — {self.start_date}'
+
+    @property
+    def current_enrolment_count(self):
+        return self.enrolments.filter(status__in=['pending', 'active']).count()
+
+    @property
+    def is_full(self):
+        return self.current_enrolment_count >= self.capacity
