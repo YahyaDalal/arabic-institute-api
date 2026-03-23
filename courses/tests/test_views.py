@@ -40,9 +40,10 @@ class EnrolmentAPITests(TestCase):
     def test_enrolment_response_contains_expected_fields(self):
         self.client.force_authenticate(user=self.student)
         r = self.client.post('/api/enrolments/', {'cohort': self.cohort.id})
-        self.assertIn('status', r.data)
-        self.assertIn('can_issue_certificate', r.data)
-        self.assertIn('student_email', r.data)
+        self.assertIn('cohort', r.data)
+        self.assertIn('course_title', r.data)
+        self.assertIn('final_grade', r.data)
+        self.assertIn('fees_paid', r.data)
 
     def test_teacher_can_update_grade(self):
         enrolment = Enrolment.objects.create(

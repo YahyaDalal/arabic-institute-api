@@ -77,8 +77,15 @@ class CertificateAPITests(TestCase):
         self.assertEqual(r.status_code, 403)
 
     def test_ineligible_enrolment_cannot_get_certificate(self):
+        # Create a different cohort for ineligible enrolment
+        cohort2 = Cohort.objects.create(
+            course=self.course, teacher=self.teacher,
+            start_date=date.today() + timedelta(days=91),
+            end_date=date.today() + timedelta(days=180),
+            capacity=10, enrolment_open=True
+        )
         ineligible = Enrolment.objects.create(
-            student=self.student, cohort=self.cohort,
+            student=self.student, cohort=cohort2,
             status='active', attendance_percentage=50,
             final_grade=30, fees_paid=False, teacher_approved=False
         )
