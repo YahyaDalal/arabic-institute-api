@@ -36,6 +36,7 @@ class PasswordResetRequestView(APIView):
 
     def post(self, request):
         email = request.data.get('email')
+        print(f"DEBUG: Password reset requested for {email}")
         try:
             user = User.objects.get(email=email)
         except User.DoesNotExist:
@@ -43,8 +44,11 @@ class PasswordResetRequestView(APIView):
 
         token = secrets.token_urlsafe(32)
         cache.set(f'pwd_reset_{token}', user.pk, timeout=3600)
+        reset_url = f"{settings.FRONTEND_URL}/reset-password/confirm?token={token}"
 
-        reset_url = f"{settings.FRONTEND_URL}/reset-password?token={token}"
+        print(f"DEBUG: SendGrid API key present: {bool(settings.SENDGRID_API_KEY)}")
+        print(f"DEBUG: Sending to: {email}")
+        print(f"DEBUG: Reset URL: {reset_url}")
 
         message = Mail(
             from_email=settings.DEFAULT_FROM_EMAIL,
@@ -54,9 +58,10 @@ class PasswordResetRequestView(APIView):
         )
         try:
             sg = SendGridAPIClient(settings.SENDGRID_API_KEY)
-            sg.send(message)
+            response = sg.send(message)
+            print(f"DEBUG: SendGrid response status: {response.status_code}")
         except Exception as e:
-            print(f"SendGrid error: {e}")
+            print(f"DEBUG: SendGrid error: {e}")
 
         return Response({'message': 'If that email exists, a reset link was sent.'})
 
