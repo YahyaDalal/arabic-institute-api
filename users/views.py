@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
+from rest_framework import parsers
 from .serializers import RegisterSerializer, UserProfileSerializer
 
 User = get_user_model()
@@ -24,6 +25,7 @@ class RegisterView(generics.CreateAPIView):
 class ProfileView(generics.RetrieveUpdateAPIView):
     serializer_class = UserProfileSerializer
     permission_classes = [permissions.IsAuthenticated]
+    parser_classes = [parsers.MultiPartParser, parsers.FormParser, parsers.JSONParser]
 
     def get_object(self):
         return self.request.user
