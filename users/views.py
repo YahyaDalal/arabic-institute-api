@@ -48,7 +48,8 @@ class PasswordResetRequestView(APIView):
 
         token = secrets.token_urlsafe(32)
         cache.set(f'pwd_reset_{token}', user.pk, timeout=3600)
-        reset_url = f"{settings.FRONTEND_URL}/reset-password/confirm?token={token}"
+        frontend_url = settings.FRONTEND_URL.rstrip('/')
+        reset_url = f"{frontend_url}/#/reset-password/confirm?token={token}"
 
         print(f"DEBUG: SendGrid API key present: {bool(settings.SENDGRID_API_KEY)}")
         print(f"DEBUG: Sending to: {email}")
