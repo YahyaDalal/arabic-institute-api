@@ -30,6 +30,10 @@ class ProfileView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return self.request.user
 
+    def perform_update(self, serializer):
+        """Save the user profile."""
+        return serializer.save()
+
 
 class PasswordResetRequestView(APIView):
     permission_classes = [permissions.AllowAny]
