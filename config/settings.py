@@ -79,8 +79,10 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://localhost:3000',
+    'https://arabic-institute-frontend.onrender.com',
 ]
 
+CORS_ALLOW_ALL_ORIGINS = os.getenv('CORS_ALLOW_ALL_ORIGINS', 'False') == 'True'
 CORS_ALLOW_CREDENTIALS = True
 
 FRONTEND_URL = os.getenv('FRONTEND_URL', 'http://localhost:5173')
