@@ -3,6 +3,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from datetime import timedelta
 import cloudinary
+import dj_database_url
 
 load_dotenv()
 
@@ -53,14 +54,10 @@ TEMPLATES = [{'BACKEND': 'django.template.backends.django.DjangoTemplates',
 WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'arabic_institute'),
-        'USER': os.getenv('DB_USER', 'postgres'),
-        'PASSWORD': os.getenv('DB_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
-    }
+    'default': dj_database_url.config(
+        default=f"postgresql://{os.getenv('DB_USER', 'postgres')}:{os.getenv('DB_PASSWORD', '')}@{os.getenv('DB_HOST', 'localhost')}:{os.getenv('DB_PORT', '5432')}/{os.getenv('DB_NAME', 'arabic_institute')}",
+        conn_max_age=600
+    )
 }
 
 AUTH_USER_MODEL = 'users.User'
