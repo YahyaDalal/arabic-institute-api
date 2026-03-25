@@ -129,3 +129,18 @@ class InputSanitizationTests(TestCase):
             'role': 'student'
         })
         self.assertEqual(r.status_code, 400)
+        
+        
+class SecurityHeaderTests(TestCase):
+    """Tests that security headers are present on responses."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_xframe_options_header_present(self):
+        r = self.client.get('/api/auth/register/')
+        self.assertEqual(r.get('X-Frame-Options'), 'DENY')
+
+    def test_content_type_nosniff_header_present(self):
+        r = self.client.get('/api/auth/register/')
+        self.assertEqual(r.get('X-Content-Type-Options'), 'nosniff')
