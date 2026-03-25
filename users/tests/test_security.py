@@ -54,3 +54,78 @@ class TokenBlacklistTests(TestCase):
         r = self.client.post('/api/auth/logout/', {'refresh': 'sometoken'})
         self.assertEqual(r.status_code, 401)
 
+class InputSanitizationTests(TestCase):
+    """Tests for input sanitization and validation."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def test_html_tags_stripped_from_username(self):
+        r = self.client.post('/api/auth/register/', {
+            'email': 'xss@test.com',
+            'username': 'validuser',
+            'password': 'Pass123!',
+            'password2': 'Pass123!',
+            'role': 'student'
+        })
+        self.assertEqual(r.status_code, 201)
+
+    def test_script_injection_in_username_rejected(self):
+        r = self.client.post('/api/auth/register/', {
+            'email': 'xss2@test.com',
+            'username': '<script>alert(1)</script>',
+            'password': 'Pass123!',
+            'password2': 'Pass123!',
+            'role': 'student'
+        })
+        self.assertEqual(r.status_code, 400)
+
+    def test_username_with_special_chars_rejected(self):
+        r = self.client.post('/api/auth/register/', {
+            'email': 'special@test.com',
+            'username': 'user@name!',
+            'password': 'Pass123!',
+            'password2': 'Pass123!',
+            'role': 'student'
+        })
+        self.assertEqual(r.status_code, 400)
+
+    def test_username_too_short_rejected(self):
+        r = self.client.post('/api/auth/register/', {
+            'email': 'short@test.com',
+            'username': 'ab',
+            'password': 'Pass123!',
+            'password2': 'Pass123!',
+            'role': 'student'
+        })
+        self.assertEqual(r.status_code, 400)
+
+    def test_invalid_email_format_rejected(self):
+        r = self.client.post('/api/auth/register/', {
+            'email': 'notanemail',
+            'username': 'validuser',
+            'password': 'Pass123!',
+            'password2': 'Pass123!',
+            'role': 'student'
+        })
+        self.assertEqual(r.status_code, 400)
+
+    def test_sql_injection_attempt_in_email_rejected(self):
+        r = self.client.post('/api/auth/register/', {
+            'email': "'; DROP TABLE users; --",
+            'username': 'hacker',
+            'password': 'Pass123!',
+            'password2': 'Pass123!',
+            'role': 'student'
+        })
+        self.assertEqual(r.status_code, 400)
+
+    def test_empty_password_rejected(self):
+        r = self.client.post('/api/auth/register/', {
+            'email': 'empty@test.com',
+            'username': 'emptypass',
+            'password': '',
+            'password2': '',
+            'role': 'student'
+        })
+        self.assertEqual(r.status_code, 400)
