@@ -5,9 +5,11 @@ import secrets
 from django.contrib.auth import get_user_model
 from django.core.cache import cache
 from django.conf import settings
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.exceptions import TokenError
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from rest_framework import parsers
@@ -85,3 +87,24 @@ class PasswordResetConfirmView(APIView):
         user.save()
         cache.delete(f'pwd_reset_{token}')
         return Response({'message': 'Password reset successful.'})
+
+
+class LogoutView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        refresh_token = request.data.get('refresh')
+        if not refresh_token:
+            return Response(
+                {'error': 'Refresh token is required.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        try:
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+            return Response({'message': 'Logged out successfully.'})
+        except TokenError:
+            return Response(
+                {'error': 'Invalid or expired token.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )
