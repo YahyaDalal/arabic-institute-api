@@ -144,3 +144,46 @@ class SecurityHeaderTests(TestCase):
     def test_content_type_nosniff_header_present(self):
         r = self.client.get('/api/auth/register/')
         self.assertEqual(r.get('X-Content-Type-Options'), 'nosniff')
+
+class AuthorisationBoundaryTests(TestCase):
+    """Tests that users cannot access resources they don't own."""
+
+    def setUp(self):
+        self.client = APIClient()
+        self.user1 = User.objects.create_user(
+            email='user1@test.com', username='user1',
+            password='Pass123!', role='student'
+        )
+        self.user2 = User.objects.create_user(
+            email='user2@test.com', username='user2',
+            password='Pass123!', role='student'
+        )
+
+    def test_user_cannot_access_another_users_profile(self):
+        self.client.force_authenticate(user=self.user1)
+        r = self.client.get('/api/auth/profile/')
+        self.assertEqual(r.status_code, 200)
+        # Should only return user1's data
+        self.assertEqual(r.data['email'], 'user1@test.com')
+
+    def test_unauthenticated_request_returns_401_not_403(self):
+        """401 means not authenticated, 403 means not authorised.
+        Unauthenticated requests should always get 401."""
+        endpoints = [
+            '/api/auth/profile/',
+            '/api/courses/',
+            '/api/enrolments/my/',
+            '/api/certificates/my/',
+        ]
+        for endpoint in endpoints:
+            r = self.client.get(endpoint)
+            self.assertEqual(
+                r.status_code, 401,
+                msg=f'{endpoint} should return 401 for unauthenticated requests'
+            )
+
+    def test_student_role_cannot_escalate_to_admin(self):
+        self.client.force_authenticate(user=self.user1)
+        r = self.client.patch('/api/auth/profile/', {'role': 'admin'})
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.data['role'], 'student')
