@@ -14,6 +14,7 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from rest_framework import parsers
 from .serializers import RegisterSerializer, UserProfileSerializer
+from config.permissions import IsAdmin
 
 User = get_user_model()
 
@@ -22,6 +23,12 @@ class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [permissions.AllowAny]
+
+
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserProfileSerializer
+    permission_classes = [IsAdmin]
 
 
 class ProfileView(generics.RetrieveUpdateAPIView):

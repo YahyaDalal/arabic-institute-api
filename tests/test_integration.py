@@ -1,8 +1,9 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from django.contrib.auth import get_user_model
-from courses.models import Course
+from courses.models import Course, Cohort
 from enrolments.models import Enrolment
+from datetime import date, timedelta
 
 User = get_user_model()
 
@@ -32,22 +33,29 @@ class ProtectedEndpointIntegrationTests(TestCase):
         # Create test course
         self.course = Course.objects.create(
             title='Integration Test Course',
-            code='INT101',
             description='Test course',
-            instructor=self.teacher,
-            is_published=True
+            level='A1',
+            status='published'
+        )
+        
+        # Create cohort for the course
+        self.cohort = Cohort.objects.create(
+            course=self.course,
+            teacher=self.teacher,
+            start_date=date.today(),
+            end_date=date.today() + timedelta(days=30)
         )
         
         # Enroll student1
         self.enrolment = Enrolment.objects.create(
             student=self.student1,
-            course=self.course,
+            cohort=self.cohort,
             status='active'
         )
 
     def test_unauthenticated_user_cannot_access_protected_endpoints(self):
         """Unauthenticated users should get 401 on protected endpoints."""
-        r = self.client.get('/api/users/profile/')
+        r = self.client.get('/api/auth/profile/')
         self.assertEqual(r.status_code, 401)
 
     def test_student_can_access_published_courses(self):
@@ -63,10 +71,9 @@ class ProtectedEndpointIntegrationTests(TestCase):
         """Students should not see unpublished courses."""
         unpublished = Course.objects.create(
             title='Draft Course',
-            code='DRF101',
             description='Not published',
-            instructor=self.teacher,
-            is_published=False
+            level='B1',
+            status='draft'
         )
         
         self.client.force_authenticate(user=self.student1)
@@ -81,10 +88,9 @@ class ProtectedEndpointIntegrationTests(TestCase):
         """Admins should see all courses (published and unpublished)."""
         unpublished = Course.objects.create(
             title='Draft Course',
-            code='DRF102',
             description='Not published',
-            instructor=self.teacher,
-            is_published=False
+            level='C1',
+            status='draft'
         )
         
         self.client.force_authenticate(user=self.admin)
@@ -98,7 +104,7 @@ class ProtectedEndpointIntegrationTests(TestCase):
     def test_student_can_view_own_profile(self):
         """Students should access their own profile."""
         self.client.force_authenticate(user=self.student1)
-        r = self.client.get('/api/users/profile/')
+        r = self.client.get('/api/auth/profile/')
         self.assertEqual(r.status_code, 200)
         self.assertEqual(r.data['email'], 'student1@test.com')
 
@@ -152,8 +158,9 @@ class RoleBasedAccessControlTests(TestCase):
         self.client.force_authenticate(user=self.admin)
         r = self.client.post('/api/courses/', {
             'title': 'Admin Course',
-            'code': 'ADM101',
-            'description': 'Created by admin'
+            'description': 'Created by admin',
+            'level': 'A1',
+            'status': 'published'
         })
         self.assertEqual(r.status_code, 201)
 
@@ -197,29 +204,42 @@ class DataIsolationTests(TestCase):
         
         self.course1 = Course.objects.create(
             title='Course 1',
-            code='CRS1',
             description='For student 1',
-            instructor=self.teacher,
-            is_published=True
+            level='A1',
+            status='published'
         )
         
         self.course2 = Course.objects.create(
             title='Course 2',
-            code='CRS2',
             description='For student 2',
-            instructor=self.teacher,
-            is_published=True
+            level='B1',
+            status='published'
+        )
+        
+        # Create cohorts
+        self.cohort1 = Cohort.objects.create(
+            course=self.course1,
+            teacher=self.teacher,
+            start_date=date.today(),
+            end_date=date.today() + timedelta(days=30)
+        )
+        
+        self.cohort2 = Cohort.objects.create(
+            course=self.course2,
+            teacher=self.teacher,
+            start_date=date.today(),
+            end_date=date.today() + timedelta(days=30)
         )
         
         Enrolment.objects.create(
             student=self.student1,
-            course=self.course1,
+            cohort=self.cohort1,
             status='active'
         )
         
         Enrolment.objects.create(
             student=self.student2,
-            course=self.course2,
+            cohort=self.cohort2,
             status='active'
         )
 
@@ -232,8 +252,8 @@ class DataIsolationTests(TestCase):
         # If enrolments endpoint exists and returns list
         if r.status_code == 200 and isinstance(r.data, list):
             # Should only see own enrolments
-            course_ids = [e.get('course') for e in r.data if e.get('course')]
-            self.assertNotIn(self.course2.id, course_ids)
+            cohort_ids = [e.get('cohort') for e in r.data if e.get('cohort')]
+            self.assertNotIn(self.cohort2.id, cohort_ids)
 
     def test_student_can_see_only_own_enrolments(self):
         """Students should see only their own enrolments."""
@@ -241,9 +261,9 @@ class DataIsolationTests(TestCase):
         r = self.client.get('/api/enrolments/')
         
         if r.status_code == 200 and isinstance(r.data, list):
-            # Should contain enrolment to course1
-            course_ids = [e.get('course') for e in r.data if e.get('course')]
-            self.assertIn(self.course1.id, course_ids)
+            # Should contain enrolment to cohort1
+            cohort_ids = [e.get('cohort') for e in r.data if e.get('cohort')]
+            self.assertIn(self.cohort1.id, cohort_ids)
 
     def test_teacher_can_view_their_course_students(self):
         """Teachers should see students enrolled in their courses."""

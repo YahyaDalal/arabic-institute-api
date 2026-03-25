@@ -1,0 +1,417 @@
+Creating test database for alias 'default'...
+..../Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/core/handlers/base.py:61: UserWarning: No directory at: /Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/staticfiles/
+  mw_instance = middleware(adapted_handler)
+..............EEEEEEEEEEEE....................EEEEEEEEEEFF.FF...................................................
+======================================================================
+ERROR: test_admin_can_delete_course (courses.tests.test_views_extended.CourseDetailAPITests)
+Admins should be able to delete courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 90, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_admin_can_update_course (courses.tests.test_views_extended.CourseDetailAPITests)
+Admins should be able to update courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 90, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_student_can_retrieve_published_course (courses.tests.test_views_extended.CourseDetailAPITests)
+Students can retrieve published course details.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 90, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_student_cannot_delete_course (courses.tests.test_views_extended.CourseDetailAPITests)
+Students should not be able to delete courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 90, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_student_cannot_update_course (courses.tests.test_views_extended.CourseDetailAPITests)
+Students should not be able to update courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 90, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_unauthenticated_cannot_retrieve_course (courses.tests.test_views_extended.CourseDetailAPITests)
+Unauthenticated users cannot retrieve course details.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 90, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_admin_can_create_course (courses.tests.test_views_extended.CourseListAPITests)
+Admins should be able to create courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 15, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_admin_can_see_all_courses (courses.tests.test_views_extended.CourseListAPITests)
+Admins should see both published and draft courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 15, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_student_can_list_published_courses (courses.tests.test_views_extended.CourseListAPITests)
+Students should only see published courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 15, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_student_cannot_create_course (courses.tests.test_views_extended.CourseListAPITests)
+Students should not be able to create courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 15, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_teacher_can_list_published_courses (courses.tests.test_views_extended.CourseListAPITests)
+Teachers should only see published courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 15, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_unauthenticated_cannot_list_courses (courses.tests.test_views_extended.CourseListAPITests)
+Unauthenticated users should not be able to list courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/courses/tests/test_views_extended.py", line 15, in setUp
+    self.admin = User.objects.create_user(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 175, in create_user
+    return self._create_user(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 162, in _create_user
+    user = self._create_user_object(username, email, password, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/contrib/auth/models.py", line 154, in _create_user_object
+    user = self.model(username=username, email=email, **extra_fields)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 558, in __init__
+    _setattr(self, prop, value)
+AttributeError: can't set attribute 'is_admin'
+
+======================================================================
+ERROR: test_student1_cannot_access_student2_enrolment_data (tests.test_integration.DataIsolationTests)
+Students should not access other student enrolments.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 198, in setUp
+    self.course1 = Course.objects.create(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj = self.model(**kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Course() got unexpected keyword arguments: 'code', 'instructor', 'is_published'
+
+======================================================================
+ERROR: test_student_can_see_only_own_enrolments (tests.test_integration.DataIsolationTests)
+Students should see only their own enrolments.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 198, in setUp
+    self.course1 = Course.objects.create(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj = self.model(**kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Course() got unexpected keyword arguments: 'code', 'instructor', 'is_published'
+
+======================================================================
+ERROR: test_teacher_can_view_their_course_students (tests.test_integration.DataIsolationTests)
+Teachers should see students enrolled in their courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 198, in setUp
+    self.course1 = Course.objects.create(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj = self.model(**kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Course() got unexpected keyword arguments: 'code', 'instructor', 'is_published'
+
+======================================================================
+ERROR: test_admin_can_see_all_courses (tests.test_integration.ProtectedEndpointIntegrationTests)
+Admins should see all courses (published and unpublished).
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 33, in setUp
+    self.course = Course.objects.create(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj = self.model(**kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Course() got unexpected keyword arguments: 'code', 'instructor', 'is_published'
+
+======================================================================
+ERROR: test_student_can_access_published_courses (tests.test_integration.ProtectedEndpointIntegrationTests)
+Students should see published courses in list.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 33, in setUp
+    self.course = Course.objects.create(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj = self.model(**kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Course() got unexpected keyword arguments: 'code', 'instructor', 'is_published'
+
+======================================================================
+ERROR: test_student_can_view_own_profile (tests.test_integration.ProtectedEndpointIntegrationTests)
+Students should access their own profile.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 33, in setUp
+    self.course = Course.objects.create(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj = self.model(**kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Course() got unexpected keyword arguments: 'code', 'instructor', 'is_published'
+
+======================================================================
+ERROR: test_student_cannot_see_unpublished_courses (tests.test_integration.ProtectedEndpointIntegrationTests)
+Students should not see unpublished courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 33, in setUp
+    self.course = Course.objects.create(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj = self.model(**kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Course() got unexpected keyword arguments: 'code', 'instructor', 'is_published'
+
+======================================================================
+ERROR: test_student_cannot_view_other_student_profile (tests.test_integration.ProtectedEndpointIntegrationTests)
+Students should not have access to other student profiles.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 33, in setUp
+    self.course = Course.objects.create(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj = self.model(**kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Course() got unexpected keyword arguments: 'code', 'instructor', 'is_published'
+
+======================================================================
+ERROR: test_teacher_can_view_own_course_enrolments (tests.test_integration.ProtectedEndpointIntegrationTests)
+Teachers should view enrolments for their courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 33, in setUp
+    self.course = Course.objects.create(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj = self.model(**kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Course() got unexpected keyword arguments: 'code', 'instructor', 'is_published'
+
+======================================================================
+ERROR: test_unauthenticated_user_cannot_access_protected_endpoints (tests.test_integration.ProtectedEndpointIntegrationTests)
+Unauthenticated users should get 401 on protected endpoints.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 33, in setUp
+    self.course = Course.objects.create(
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/query.py", line 663, in create
+    obj = self.model(**kwargs)
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/venv/lib/python3.10/site-packages/django/db/models/base.py", line 569, in __init__
+    raise TypeError(
+TypeError: Course() got unexpected keyword arguments: 'code', 'instructor', 'is_published'
+
+======================================================================
+FAIL: test_admin_can_create_course (tests.test_integration.RoleBasedAccessControlTests)
+Admins should be able to create courses.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 158, in test_admin_can_create_course
+    self.assertEqual(r.status_code, 201)
+AssertionError: 400 != 201
+
+======================================================================
+FAIL: test_admin_can_view_all_users (tests.test_integration.RoleBasedAccessControlTests)
+Admins should view all users.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 177, in test_admin_can_view_all_users
+    self.assertEqual(r.status_code, 200)
+AssertionError: 404 != 200
+
+======================================================================
+FAIL: test_student_cannot_view_all_users (tests.test_integration.RoleBasedAccessControlTests)
+Students should not see all user lists.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 171, in test_student_cannot_view_all_users
+    self.assertEqual(r.status_code, 403)
+AssertionError: 404 != 403
+
+======================================================================
+FAIL: test_teacher_can_view_users (tests.test_integration.RoleBasedAccessControlTests)
+Teachers should have user listing access.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/yahyadalal/Dropbox/Mac/Documents/Ada college/arabic-institute-enterprise/arabic-institute-api/tests/test_integration.py", line 165, in test_teacher_can_view_users
+    self.assertIn(r.status_code, [200, 403])
+AssertionError: 404 not found in [200, 403]
+
+----------------------------------------------------------------------
+Ran 116 tests in 29.798s
+
+FAILED (failures=4, errors=22)
+Destroying test database for alias 'default'...
+Testing password '123':
+  -> REJECTED: ['This password is too short. It must contain at least 8 characters.', 'This password is too common.', 'This password is entirely numeric.']
+
+Testing password 'SecurePass123!':
+  -> ACCEPTED (CORRECT)
+
+==================================================
+Testing RegisterSerializer with '123':
+  is_valid(): False
+  errors: {'username': [ErrorDetail(string='A user with that username already exists.', code='unique')], 'password': [ErrorDetail(string='This password is too short. It must contain at least 8 characters.', code='password_too_short'), ErrorDetail(string='This password is too common.', code='password_too_common'), ErrorDetail(string='This password is entirely numeric.', code='password_entirely_numeric')]}
+Found 116 test(s).
+System check identified no issues (0 silenced).
+DEBUG: Password reset requested for reset@test.com
+DEBUG: SendGrid API key present: True
+DEBUG: Sending to: reset@test.com
+DEBUG: Reset URL: http://localhost:5173/#/reset-password/confirm?token=xuS2k7BVfdH8Rgu4hPHk2DdlgUEasAtSjfHi4YpAKcI
+DEBUG: SendGrid response status: 202
+DEBUG: Password reset requested for nonexistent@test.com

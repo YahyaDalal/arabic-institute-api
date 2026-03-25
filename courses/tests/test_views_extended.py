@@ -14,7 +14,7 @@ class CourseListAPITests(TestCase):
         self.client = APIClient()
         self.admin = User.objects.create_user(
             email='admin@test.com', username='admin',
-            password='Pass123!', role='admin', is_admin=True
+            password='Pass123!', role='admin'
         )
         self.student = User.objects.create_user(
             email='student@test.com', username='student',
@@ -89,7 +89,7 @@ class CourseDetailAPITests(TestCase):
         self.client = APIClient()
         self.admin = User.objects.create_user(
             email='admin@test.com', username='admin',
-            password='Pass123!', role='admin', is_admin=True
+            password='Pass123!', role='admin'
         )
         self.student = User.objects.create_user(
             email='student@test.com', username='student',
